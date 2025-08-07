@@ -1,0 +1,75 @@
+{
+  "version": 2,
+  "name": "hrw-mini-apps",
+  "builds": [
+    {
+      "src": "feedback-mini-app/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "feedback-mini-app/dist"
+      }
+    },
+    {
+      "src": "home-page-mini-app/package.json", 
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "home-page-mini-app/dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/feedback-mini-app/(.*)",
+      "dest": "/feedback-mini-app/index.html"
+    },
+    {
+      "src": "/home-page-mini-app/(.*)",
+      "dest": "/home-page-mini-app/index.html"
+    },
+    {
+      "src": "/",
+      "dest": "/feedback-mini-app/"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/feedback-mini-app/(.*)",
+      "destination": "/feedback-mini-app/index.html"
+    },
+    {
+      "source": "/home-page-mini-app/(.*)",
+      "destination": "/home-page-mini-app/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-XSS-Protection", 
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "feedback-mini-app/src/**": {
+      "includeFiles": "feedback-mini-app/dist/**"
+    },
+    "home-page-mini-app/src/**": {
+      "includeFiles": "home-page-mini-app/dist/**"
+    }
+  }
+}

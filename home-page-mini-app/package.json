@@ -1,9 +1,9 @@
 {
-  "name": "feedback-mini-app",
+  "name": "home-page-mini-app",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "/feedback-mini-app",
+  "homepage": "/home-page-mini-app",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

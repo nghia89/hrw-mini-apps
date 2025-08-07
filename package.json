@@ -1,0 +1,23 @@
+{
+  "name": "hrw-mini-apps",
+  "version": "1.0.0",
+  "description": "Multiple React Mini Apps for React Native WebView",
+  "private": true,
+  "workspaces": [
+    "feedback-mini-app",
+    "home-page-mini-app"
+  ],
+  "scripts": {
+    "build": "npm run build:feedback && npm run build:home",
+    "build:feedback": "cd feedback-mini-app && npm run build",
+    "build:home": "cd home-page-mini-app && npm run build",
+    "dev:feedback": "cd feedback-mini-app && npm run dev",
+    "dev:home": "cd home-page-mini-app && npm run dev",
+    "install:all": "npm install && cd feedback-mini-app && npm install && cd ../home-page-mini-app && npm install",
+    "clean": "rm -rf */dist */node_modules node_modules",
+    "vercel-build": "npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

@@ -25,7 +25,7 @@ const AppContent = () => {
   }
 
   return (
-    <Router basename="/feedback-web">
+    <Router basename="/feedback-mini-app">
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />

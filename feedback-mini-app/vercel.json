@@ -1,0 +1,48 @@
+{
+  "version": 2,
+  "name": "feedback-mini-app",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/feedback-web/(.*)",
+      "dest": "/feedback-web/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/feedback-web/$1"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/feedback-web/(.*)",
+      "destination": "/feedback-web/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ]
+}

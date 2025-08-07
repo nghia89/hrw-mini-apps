@@ -19,6 +19,14 @@
   ],
   "routes": [
     {
+      "src": "/feedback-mini-app/assets/(.*)",
+      "dest": "/feedback-mini-app/assets/$1"
+    },
+    {
+      "src": "/home-page-mini-app/assets/(.*)",
+      "dest": "/home-page-mini-app/assets/$1"
+    },
+    {
       "src": "/feedback-mini-app/(.*)",
       "dest": "/feedback-mini-app/index.html"
     },

@@ -19,4 +19,10 @@ export default defineConfig({
         port: 3000,
         open: '/feedback-mini-app/',
     },
+    // Ensure proper path resolution
+    resolve: {
+        alias: {
+            '@': '/src',
+        },
+    },
 })

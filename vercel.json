@@ -1,20 +1,13 @@
 {
   "version": 2,
   "name": "hrw-mini-apps",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install && cd feedback-mini-app && npm install && cd ../home-page-mini-app && npm install && cd ..",
   "builds": [
     {
-      "src": "feedback-mini-app/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "feedback-mini-app/dist"
-      }
-    },
-    {
-      "src": "home-page-mini-app/package.json", 
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "home-page-mini-app/dist"
-      }
+      "src": "package.json",
+      "use": "@vercel/static-build"
     }
   ],
   "routes": [
@@ -39,16 +32,6 @@
       "dest": "/feedback-mini-app/"
     }
   ],
-  "rewrites": [
-    {
-      "source": "/feedback-mini-app/(.*)",
-      "destination": "/feedback-mini-app/index.html"
-    },
-    {
-      "source": "/home-page-mini-app/(.*)",
-      "destination": "/home-page-mini-app/index.html"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -71,13 +54,5 @@
         }
       ]
     }
-  ],
-  "functions": {
-    "feedback-mini-app/src/**": {
-      "includeFiles": "feedback-mini-app/dist/**"
-    },
-    "home-page-mini-app/src/**": {
-      "includeFiles": "home-page-mini-app/dist/**"
-    }
-  }
+  ]
 }

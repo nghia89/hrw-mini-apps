@@ -8,13 +8,14 @@
     "home-page-mini-app"
   ],
   "scripts": {
-    "build": "npm run build:feedback && npm run build:home",
+    "build": "npm run build:feedback && npm run build:home && npm run copy:dist",
     "build:feedback": "cd feedback-mini-app && npm run build",
     "build:home": "cd home-page-mini-app && npm run build",
+    "copy:dist": "mkdir -p dist && cp -r feedback-mini-app/dist dist/feedback-mini-app && cp -r home-page-mini-app/dist dist/home-page-mini-app",
     "dev:feedback": "cd feedback-mini-app && npm run dev",
     "dev:home": "cd home-page-mini-app && npm run dev",
     "install:all": "npm install && cd feedback-mini-app && npm install && cd ../home-page-mini-app && npm install",
-    "clean": "rm -rf */dist */node_modules node_modules",
+    "clean": "rm -rf */dist */node_modules node_modules dist",
     "vercel-build": "npm run build"
   },
   "devDependencies": {

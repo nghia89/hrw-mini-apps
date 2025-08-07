@@ -31,20 +31,24 @@ hrw-mini-apps/
 ## 🌐 Live URLs
 
 ### Production (Vercel)
+
 - **Feedback App**: `https://hrw-mini-apps.vercel.app/feedback-mini-app/`
 - **Home App**: `https://hrw-mini-apps.vercel.app/home-page-mini-app/`
 
 ### VPS Docker (when deployed)
+
 - **Feedback App**: `http://YOUR_VPS_IP/feedback-mini-app/`
 - **Home App**: `http://YOUR_VPS_IP/home-page-mini-app/`
 
 ## 🛠️ Development
 
 ### Prerequisites
+
 - Node.js 18+
 - npm or yarn
 
 ### Installation
+
 ```bash
 # Clone repository
 git clone https://github.com/nghia89/hrw-mini-apps.git
@@ -55,6 +59,7 @@ npm run install:all
 ```
 
 ### Development Commands
+
 ```bash
 # Start feedback app (port 3000)
 npm run dev:feedback
@@ -70,6 +75,7 @@ npm run clean
 ```
 
 ### Local Testing
+
 ```bash
 # Build and test locally
 npm run build
@@ -83,6 +89,7 @@ npm run build
 ## 🚀 Deployment
 
 ### Quick Deploy
+
 ```bash
 # Deploy to both Vercel and Docker
 ./deploy.sh both
@@ -90,13 +97,14 @@ npm run build
 # Deploy to Vercel only
 ./deploy.sh vercel
 
-# Deploy to Docker only  
+# Deploy to Docker only
 ./deploy.sh docker
 ```
 
 ### Manual Deployment
 
 #### Vercel
+
 ```bash
 # Install Vercel CLI
 npm install -g vercel
@@ -106,6 +114,7 @@ vercel --prod
 ```
 
 #### Docker VPS
+
 ```bash
 # On your VPS
 git clone <repository>
@@ -116,13 +125,13 @@ docker-compose up -d
 ## 📱 React Native Integration
 
 ```javascript
-import { WebView } from 'react-native-webview';
+import { WebView } from "react-native-webview";
 
 export default function MiniAppScreen() {
   return (
     <WebView
-      source={{ 
-        uri: 'https://hrw-mini-apps.vercel.app/feedback-mini-app/' 
+      source={{
+        uri: "https://hrw-mini-apps.vercel.app/feedback-mini-app/",
       }}
       style={{ flex: 1 }}
       javaScriptEnabled={true}
@@ -130,7 +139,7 @@ export default function MiniAppScreen() {
       onMessage={(event) => {
         // Handle messages from mini app
         const data = JSON.parse(event.nativeEvent.data);
-        console.log('Received from mini app:', data);
+        console.log("Received from mini app:", data);
       }}
     />
   );
@@ -140,17 +149,19 @@ export default function MiniAppScreen() {
 ## 🔧 Configuration
 
 ### Base Paths
+
 Each mini app has its own base path configured in `vite.config.js`:
 
 ```javascript
 // feedback-mini-app/vite.config.js
 export default defineConfig({
-  base: '/feedback-mini-app/',  // Important for deployment
+  base: "/feedback-mini-app/", // Important for deployment
   // ...
 });
 ```
 
 ### Environment Variables
+
 Create `.env.local` files in each mini app:
 
 ```bash
@@ -162,6 +173,7 @@ VITE_APP_TOKEN=your-token-here
 ## 🐳 Docker
 
 ### Build and Run
+
 ```bash
 # Build Docker image
 docker-compose build
@@ -174,6 +186,7 @@ docker-compose logs -f
 ```
 
 ### Health Check
+
 ```bash
 curl http://localhost/health
 ```
@@ -194,6 +207,7 @@ curl http://localhost/health
 4. **Docker issues**: Check logs with `docker-compose logs`
 
 ### Debug Commands
+
 ```bash
 # Check build output
 ls -la */dist/
@@ -220,6 +234,7 @@ This project is private and proprietary.
 ## 🆘 Support
 
 For issues and questions:
+
 - Create GitHub issue
 - Contact development team
 - Check documentation in `/docs` folder
